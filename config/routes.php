@@ -57,17 +57,30 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->applyMiddleware('csrf');
 
+    $routes->connect('/', ['controller' => 'Users', 'action' => 'login']);
+    $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
+
+    $routes->connect('/my/change_password', ['controller' => 'Users', 'action' => 'changePassword']);
+    $routes->connect('/my/profile', ['controller' => 'Users', 'action' => 'profile']);
+
+    $routes->connect('/creators', ['controller' => 'Users', 'action' => 'index']);
+    $routes->connect('/creators/add', ['controller' => 'Users', 'action' => 'add']);
+    $routes->connect('/creators/edit/*', ['controller' => 'Users', 'action' => 'edit']);
+    $routes->connect('/creators/update_password/*', ['controller' => 'Users', 'action' => 'updatePassword']);
+    $routes->connect('/creators/delete/*', ['controller' => 'Users', 'action' => 'delete']);
+    $routes->connect('/creators/active/*', ['controller' => 'Users', 'action' => 'active']);
+
     /*
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    //$routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 
     /*
      * ...and connect the rest of 'Pages' controller's URLs.
      */
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    //$routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
     /*
      * Connect catchall routes for all controllers.
