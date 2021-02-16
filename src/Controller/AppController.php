@@ -61,14 +61,14 @@ class AppController extends Controller
             ],
              // If unauthorized, return them to page they were just on
             'unauthorizedRedirect' => $this->referer(),
-            'authError' => __('Necesita iniciar sesión para acceder a este sitio')
+            'authError' => __('No tiene los permisos para acceder a este sitio')
         ]);
 
         /*
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3/en/controllers/components/security.html
          */
-        $this->loadComponent('Security');
+        //$this->loadComponent('Security');
     }
 
     public function isAuthorized($user)

@@ -44,7 +44,7 @@ class UsersController extends AppController
                     if ($user['role'] == 0) {
                         return $this->redirect(['action' => 'index']);
                     } else if ($user['role'] == 1) {
-                        return $this->redirect(['action' => 'profile']);
+                        return $this->redirect(['controller' => 'Challenges', 'action' => 'index']);
                     } else {
                         return $this->redirect($this->Auth->redirectUrl());
                     }
@@ -191,7 +191,8 @@ class UsersController extends AppController
 
     public function changePassword()
     {
-        $user = $this->Users->get($this->Auth->user('id'), [
+        $idUserSession = $this->Auth->user('id');
+        $user = $this->Users->get($idUserSession, [
             'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
