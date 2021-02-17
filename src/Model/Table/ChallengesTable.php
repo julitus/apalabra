@@ -49,6 +49,12 @@ class ChallengesTable extends Table
             'foreignKey' => 'challenge_id',
             'saveStrategy' => 'replace'
         ]);
+        $this->hasMany('Results', [
+            'foreignKey' => 'challenge_id'
+        ]);
+        $this->hasMany('Records', [
+            'foreignKey' => 'challenge_id'
+        ]);
     }
 
     /**

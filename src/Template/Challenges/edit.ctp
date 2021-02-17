@@ -32,7 +32,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <?= $this->Form->control('name', ['class' => 'form-control', 'label' => 'Nombre', 'maxlength' => 6, 'placeholder' => 'max. 6 caracteres.']) ?>
+                                <?= $this->Form->control('name', ['class' => 'form-control', 'label' => 'Nombre', 'maxlength' => 32, 'placeholder' => 'max. 32 caracteres.']) ?>
                             </div>
                         </div>
                         <div class="col-md-4">

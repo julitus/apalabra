@@ -104,6 +104,25 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);
 });
 
+Router::scope('/api/', function (RouteBuilder $routes) {
+
+    $routes->connect('signin', ['controller' => 'RestPlayers', 'action' => 'signin', 'isRest' => true]);
+    $routes->connect('register', ['controller' => 'RestPlayers', 'action' => 'register', 'isRest' => true]);
+
+    $routes->connect('player/update', ['controller' => 'RestPlayers', 'action' => 'update', 'isRest' => true, 'requireAuthorization' => true]);
+    $routes->connect('player/changepass', ['controller' => 'RestPlayers', 'action' => 'changePass', 'isRest' => true, 'requireAuthorization' => true]);
+    $routes->connect('player/connection', ['controller' => 'RestPlayers', 'action' => 'setConnection', 'isRest' => true, 'requireAuthorization' => true]);
+    $routes->connect('player/connections', ['controller' => 'RestPlayers', 'action' => 'getConnections', 'isRest' => true, 'requireAuthorization' => true]);
+
+    $routes->connect('challenge/list', ['controller' => 'RestChallenges', 'action' => 'getChallenges', 'isRest' => true, 'requireAuthorization' => true]);
+    $routes->connect('challenge/get', ['controller' => 'RestChallenges', 'action' => 'getChallenge', 'isRest' => true, 'requireAuthorization' => true]);
+
+    $routes->connect('result/save', ['controller' => 'RestChallenges', 'action' => 'saveResult', 'isRest' => true, 'requireAuthorization' => true]);
+
+    
+    $routes->fallbacks(DashedRoute::class);
+});
+
 /*
  * If you need a different set of middleware or none at all,
  * open new scope and define routes there.
