@@ -38,7 +38,7 @@
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <!-- SweetAlert2 -->
-        <?= $this->Html->css('bootstrap-4.min.css') ?>
+        <?= $this->Html->css('toastr.min.css') ?>
         <!-- icheck bootstrap -->
         <?= $this->Html->css('icheck-bootstrap.min.css') ?>
         <!-- Theme style -->
@@ -88,7 +88,7 @@
         <!-- Bootstrap 4 -->
         <?= $this->Html->script('bootstrap.bundle.min.js') ?>
         <!-- SweetAlert2 -->
-        <?= $this->Html->script('sweetalert2.min.js') ?>
+        <?= $this->Html->script('toastr.min.js') ?>
         <!-- daterangepicker -->
         <?= $this->Html->script('moment.min.js') ?>
         <?= $this->Html->script('daterangepicker.js') ?>
@@ -126,6 +126,39 @@
     </div>
     <!-- /.modal -->  
 
+    <div class="modal fade" id="modal-edit-profile">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Datos de perfil</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <?= $this->Form->create(null, ['type' => 'post', 'url' => ['controller' => 'Users', 'action' => 'profile'], 'role' => 'form']) ?>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <?= $this->Form->control('new_name', ['class' => 'form-control', 'label' => 'Nombre', 'type' => 'text', 'maxlength' => 128, 'value' => $this->request->session()->read('Auth.User.name'), 'required']) ?>
+                    </div>
+                    <div class="form-group">
+                        <?= $this->Form->control('new_email', ['class' => 'form-control', 'label' => 'Correo Electrónico', 'maxlength' => 128, 'type' => 'email', 'value' => $this->request->session()->read('Auth.User.email')]) ?>
+                    </div>
+                    <div class="form-group">
+                        <?= $this->Form->control('new_phone', ['class' => 'form-control', 'label' => 'Telefóno / Celular', 'maxlength' => 64, 'type' => 'phone', 'value' => $this->request->session()->read('Auth.User.phone')]) ?>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <?= $this->Form->button(__('Cerrar'), ['type' => 'button', 'class' => 'btn btn-secondary', 'data-dismiss' => 'modal']) ?>
+                    <?= $this->Form->button(__('Actualizar'), ['class' => 'btn btn-info']) ?>
+                </div>
+            <?= $this->Form->end() ?>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
     <script type="text/javascript">
         $( document ).ready(function() {
 
@@ -146,23 +179,12 @@
 
         var alertElem = $('.message-alert');
         if (alertElem.length > 0) {
-            const Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 20000
-            });
+            toastr.options.timeOut = 7000;
 
             if (alertElem.hasClass("error")) {
-                Toast.fire({
-                    type: 'error',
-                    title: alertElem.html()
-                  });
+                toastr.error(alertElem.html());
             } else if (alertElem.hasClass("success")) {
-                Toast.fire({
-                    type: 'success',
-                    title: alertElem.html()
-                  });
+                toastr.success(alertElem.html());
             }
         }
 

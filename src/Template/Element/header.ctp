@@ -13,6 +13,11 @@
       <span class="nav-link"><?= $this->request->session()->read('Auth.User.name') ?></span>
     </li>
     <li class="nav-item">
+      <a class="nav-link" data-widget="control-sidebar" data-slide="true" data-toggle="modal" data-target="#modal-edit-profile" href="#">
+        <i class="fas fa-user"></i>
+      </a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" data-widget="control-sidebar" data-slide="true" data-toggle="modal" data-target="#modal-change-pass" href="#">
         <i class="fas fa-lock"></i>
       </a>

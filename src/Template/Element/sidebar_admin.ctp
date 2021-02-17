@@ -19,7 +19,10 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent nav-legacy nav-compact" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <?= $this->Html->link(__('<i class="nav-icon fas fa-users"></i> <p>Creadores</p>'), ['controller' => 'Users', 'action' => 'index'], ['id' => 'apal-creators', 'class' => 'nav-link', 'escape' => false]) ?>
+          <?= $this->Html->link(__('<i class="nav-icon fas fa-chalkboard-teacher"></i> <p>Creadores</p>'), ['controller' => 'Users', 'action' => 'index'], ['id' => 'apal-creators', 'class' => 'nav-link', 'escape' => false]) ?>
+        </li>
+        <li class="nav-item">
+          <?= $this->Html->link(__('<i class="nav-icon fas fa-users"></i> <p>Jugadores</p>'), ['controller' => 'Players', 'action' => 'index'], ['id' => 'apal-players', 'class' => 'nav-link', 'escape' => false]) ?>
         </li>
         <li class="nav-item">
           <?= $this->Html->link(__('<i class="nav-icon fas fa-sign-out-alt"></i> <p>Cerrar Sesión</p>'), ['controller' => 'Users', 'action' => 'logout'], ['class' => 'nav-link', 'escape' => false]) ?>

@@ -98,8 +98,8 @@
                 </div>
 
                 <div class="card-footer">
-                  <?= $this->Form->button(__('Guardar'), ['class' => 'btn btn-info']) ?>
-                  <?= $this->Html->link(__('Cancelar'), ['action' => 'index'], ['class' => 'btn btn-secondary float-right']) ?>
+                  <?= $this->Form->button(__('Guardar'), ['class' => 'btn btn-info float-right']) ?>
+                  <?= $this->Html->link(__('Cancelar'), ['action' => 'index'], ['class' => 'btn btn-secondary']) ?>
                 </div>
               <?= $this->Form->end() ?>
 

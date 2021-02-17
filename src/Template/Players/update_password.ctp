@@ -1,5 +1,5 @@
 <!-- Content Header (Page header) -->
-<section class="content-header apal-page" data-sidebar="creators">
+<section class="content-header apal-page" data-sidebar="players">
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
@@ -8,7 +8,7 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item"><?= $this->Html->link(__('Creadores'), ['action' => 'index'], ['escape'=>false]) ?></li>
+          <li class="breadcrumb-item"><?= $this->Html->link(__('Jugadores'), ['action' => 'index'], ['escape'=>false]) ?></li>
           <li class="breadcrumb-item active">Actualizar Contraseña</li>
         </ol>
       </div>
@@ -24,10 +24,10 @@
             <div class="card card-info card-outline">
               
               <div class="card-header">
-                <h3 class="card-title">Actualizar Contraseña: <?= $user->username ?></h3>
+                <h3 class="card-title">Actualizar Contraseña: <?= $player->email ?></h3>
               </div>
 
-              <?= $this->Form->create($user) ?>
+              <?= $this->Form->create($player) ?>
                 <div class="card-body">
                   <div class="form-group">
                     <?= $this->Form->control('password', ['class' => 'form-control', 'label' => 'Nueva Contraseña', 'minlength' => 6, 'placeholder' => 'mín. 6 caracteres.', 'value' => '']) ?>

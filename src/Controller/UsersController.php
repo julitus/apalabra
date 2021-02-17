@@ -25,10 +25,7 @@ class UsersController extends AppController
         if (in_array($action, ['index', 'add', 'edit', 'active', 'delete', 'updatePassword'])) {
             return $user['role'] == 0;
         }
-        if (in_array($action, ['profile'])) {
-            return $user['role'] == 1;
-        }
-        if (in_array($action, ['changePassword'])) {
+        if (in_array($action, ['changePassword', 'profile'])) {
             return true;
         }
         return false;
@@ -41,6 +38,7 @@ class UsersController extends AppController
             if ($user) {
                 if ($user['active']) {
                     $this->Auth->setUser($user);
+                    $this->Flash->success('Bienvenido ' . $user['name'] . '.');
                     if ($user['role'] == 0) {
                         return $this->redirect(['action' => 'index']);
                     } else if ($user['role'] == 1) {
@@ -114,10 +112,10 @@ class UsersController extends AppController
             } while($checkUserCode);
 
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('El registro se guardó con éxito.'));
+                $this->Flash->success(__('El creador se guardó con éxito.'));
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('No se guardó el registro, intentelo nuevamente.'));
+            $this->Flash->error(__('No se guardó el creador, intentelo nuevamente.'));
         }
         $this->set(compact('user'));
     }
@@ -137,10 +135,10 @@ class UsersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('El registro se guardó con éxito.'));
+                $this->Flash->success(__('El creador fue editado con éxito.'));
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('No se guardó el registro, intentelo nuevamente.'));
+            $this->Flash->error(__('No se editó el creador, intentelo nuevamente.'));
         }
         $this->set(compact('user'));
     }
@@ -160,9 +158,9 @@ class UsersController extends AppController
         // Antes de eliminar revisar los registros enlazados
 
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('El registro fue eliminado.'));
+            $this->Flash->success(__('El creador fue eliminado.'));
         } else {
-            $this->Flash->error(__('No se eliminó el registro, intentelo nuevamente.'));
+            $this->Flash->error(__('No se eliminó el creador, intentelo nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);
@@ -175,9 +173,9 @@ class UsersController extends AppController
             $user->active = !$user->active;
             $this->Users->save($user);
             if ($user->active) {
-                $this->Flash->success(__('El usuario fue activado.'));
+                $this->Flash->success(__('El creador fue activado.'));
             } else {
-                $this->Flash->success(__('El usuario fue desactivado.'));
+                $this->Flash->success(__('El creador fue desactivado.'));
             }
         }
 
@@ -186,7 +184,29 @@ class UsersController extends AppController
 
     public function profile()
     {
+        $idUserSession = $this->Auth->user('id');
+        $user = $this->Users->get($idUserSession, [
+            'contain' => [],
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $data = $this->request->getData();
+            $data['name'] = $data['new_name'];
+            $data['email'] = $data['new_email'];
+            $data['phone'] = $data['new_phone'];
 
+            $user = $this->Users->patchEntity($user, $data);
+            if ($this->Users->save($user)) {
+
+                $data = $user->toArray();
+                unset($data['password']);
+                $this->Auth->setUser($data);
+                
+                $this->Flash->success(__('Su perfil fue actualizado con éxito.'));
+                return $this->redirect($this->referer());
+            }
+            $this->Flash->error(__('No se actualizó su perfil, intentelo nuevamente.'));
+        }
+        $this->set(compact('user'));
     }
 
     public function changePassword()
@@ -202,7 +222,7 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('Su contraseña se actualizó con éxito.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect($this->referer());
             }
             $this->Flash->error(__('No se actualizó su contraseña, intentelo nuevamente.'));
         }
