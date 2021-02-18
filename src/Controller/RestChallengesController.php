@@ -76,13 +76,14 @@ class RestChallengesController extends RestController
 
     		if ($this->Challenges->Results->save($result)) {
 
-    			$data['result_id'] = $result->id;
-    			$record = $this->Challenges->Records->newEntity($data);
-    			$this->Challenges->Records->save($record);
+                $challenge = $this->Challenges->get($data['challenge_id']);
+                $challenge->attemps += 1;
+                $this->Challenges->save($challenge);
 
-    			$challenge = $this->Challenges->get($data['challenge_id']);
-    			$challenge->attemps += 1;
-    			$this->Challenges->save($challenge);
+    			$data['result_id'] = $result->id;
+                $data['user_id'] = $challenge->user_id;
+    			$record = $this->Challenges->Records->newEntity($data);
+    			$this->Challenges->Records->save($record);    			
 
     			$connection = $this->Connections->find()
     								->where(['Connections.player_id' => $data['player_id'], 'Connections.user_id' => $challenge->user_id])->first();

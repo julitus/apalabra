@@ -60,15 +60,36 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Users', 'action' => 'login']);
     $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
 
-    $routes->connect('/my/change_password', ['controller' => 'Users', 'action' => 'changePassword']);
+    $routes->connect('/my/change_pass', ['controller' => 'Users', 'action' => 'changePassword']);
     $routes->connect('/my/profile', ['controller' => 'Users', 'action' => 'profile']);
+
+    $routes->connect('/my/challenges', ['controller' => 'Challenges', 'action' => 'index']);
+    $routes->connect('/my/challenges/add', ['controller' => 'Challenges', 'action' => 'add']);
+    $routes->connect('/my/challenges/edit/*', ['controller' => 'Challenges', 'action' => 'edit']);
+    $routes->connect('/my/challenges/delete/*', ['controller' => 'Challenges', 'action' => 'delete']);
+    $routes->connect('/my/challenges/active/*', ['controller' => 'Challenges', 'action' => 'active']);
+    $routes->connect('/my/challenges/history/*', ['controller' => 'Records', 'action' => 'historyChallenge']);
+    $routes->connect('/my/challenges/results/*', ['controller' => 'Results', 'action' => 'index']);
+    $routes->connect('/my/challenges/results/history/*', ['controller' => 'Records', 'action' => 'historyResult']);
+
+    $routes->connect('/my/players', ['controller' => 'Connections', 'action' => 'index']);
+    $routes->connect('/my/players/active/*', ['controller' => 'Connections', 'action' => 'active']);
+    $routes->connect('/my/players/history/*', ['controller' => 'Records', 'action' => 'historyPlayer']);
+
+    $routes->connect('/my/history', ['controller' => 'Records', 'action' => 'history']);
 
     $routes->connect('/creators', ['controller' => 'Users', 'action' => 'index']);
     $routes->connect('/creators/add', ['controller' => 'Users', 'action' => 'add']);
     $routes->connect('/creators/edit/*', ['controller' => 'Users', 'action' => 'edit']);
-    $routes->connect('/creators/update_password/*', ['controller' => 'Users', 'action' => 'updatePassword']);
+    $routes->connect('/creators/update_pass/*', ['controller' => 'Users', 'action' => 'updatePassword']);
     $routes->connect('/creators/delete/*', ['controller' => 'Users', 'action' => 'delete']);
     $routes->connect('/creators/active/*', ['controller' => 'Users', 'action' => 'active']);
+
+    $routes->connect('/players', ['controller' => 'Players', 'action' => 'index']);
+    $routes->connect('/players/edit/*', ['controller' => 'Players', 'action' => 'edit']);
+    $routes->connect('/players/update_pass/*', ['controller' => 'Players', 'action' => 'updatePassword']);
+    $routes->connect('/players/delete/*', ['controller' => 'Players', 'action' => 'delete']);
+    $routes->connect('/players/active/*', ['controller' => 'Players', 'action' => 'active']);
 
     /*
      * Here, we are connecting '/' (base path) to a controller called 'Pages',

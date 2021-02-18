@@ -22,6 +22,9 @@ class CreateRecords extends AbstractMigration
         $table->addColumn('result_id', 'integer', [
             'null' => false,
         ])->addForeignKey('result_id', 'results', 'id', ['delete'=> 'CASCADE', 'update'=> 'NO_ACTION']);
+        $table->addColumn('user_id', 'integer', [
+            'null' => false,
+        ]);
         $table->addColumn('score', 'float', [
             'null' => false,
         ]);

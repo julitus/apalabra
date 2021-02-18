@@ -92,7 +92,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <?= $this->Form->button(__('<i class="fas fa-plus"></i> Pregunta'), ['id' => 'add-question', 'type' => 'button', 'class' => 'btn btn-info float-right']) ?>
+                            <?= $this->Form->button(__('<i class="fas fa-plus"></i>'), ['id' => 'add-question', 'type' => 'button', 'class' => 'btn btn-info float-right']) ?>
                         </div>
                     </div>
                 </div>

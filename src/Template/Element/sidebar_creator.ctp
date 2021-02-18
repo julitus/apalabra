@@ -6,21 +6,27 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
+    <div class="user-panel mt-1 pb-1 mb-1 d-flex">
+      <!--div class="image">
         <?= $this->Html->image('user.png', ['class' => 'img-circle elevation-2']); ?>
       </div>
       <div class="info">
         <a href="#" class="d-block"><?= $this->request->session()->read('Auth.User.username') ?></a>
-      </div>
+      </div-->
     </div>
 
     <!-- Sidebar Menu -->
-    <nav class="mt-2">
+    <nav class="mt-3">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent nav-legacy nav-compact" data-widget="treeview" role="menu" data-accordion="false">
         
         <li class="nav-item">
           <?= $this->Html->link(__('<i class="nav-icon fas fa-book-open"></i> <p>Desafíos</p>'), ['controller' => 'Challenges', 'action' => 'index'], ['id' => 'apal-challenges', 'class' => 'nav-link', 'escape' => false]) ?>
+        </li>
+        <li class="nav-item">
+          <?= $this->Html->link(__('<i class="nav-icon fas fa-book-reader"></i> <p>Jugadores Registrados</p>'), ['controller' => 'Connections', 'action' => 'index'], ['id' => 'apal-connections', 'class' => 'nav-link', 'escape' => false]) ?>
+        </li>
+        <li class="nav-item">
+          <?= $this->Html->link(__('<i class="nav-icon fas fa-history"></i> <p>Historial de Juego</p>'), ['controller' => 'Records', 'action' => 'history'], ['id' => 'apal-records', 'class' => 'nav-link', 'escape' => false]) ?>
         </li>
         <li class="nav-item">
           <?= $this->Html->link(__('<i class="nav-icon fas fa-sign-out-alt"></i> <p>Cerrar Sesión</p>'), ['controller' => 'Users', 'action' => 'logout'], ['class' => 'nav-link', 'escape' => false]) ?>

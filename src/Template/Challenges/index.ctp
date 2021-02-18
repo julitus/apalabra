@@ -72,12 +72,14 @@
                                     <td><?= $status[$challenge->active] ?></td>
                                     <td><?= h($challenge->modified->i18nFormat('dd-MM-yyyy HH:mm')) ?></td>
                                     <td class="actions">
+                                      <?= $this->Html->link(__('<i class="fas fa-trophy"></i>'), ['controller' => 'Results', 'action' => 'index', $challenge->id], ['escape'=>false, 'class' =>'btn btn-xs btn-success']) ?>
                                       <?php if ($challenge->active): ?>
                                         <?= $this->Form->postLink(__('<i class="fas fa-ban"></i>'), ['action' => 'active', $challenge->id], ['escape'=>false, 'class' =>'btn btn-xs btn-info', 'confirm' => __('Esta seguro de desactivar el desafío: {0}?', $challenge->name)]) ?>
                                       <?php else: ?>
                                         <?= $this->Form->postLink(__('<i class="fas fa-check"></i>'), ['action' => 'active', $challenge->id], ['escape'=>false, 'class' =>'btn btn-xs btn-info', 'confirm' => __('Esta seguro de activar el desafío: {0}?', $challenge->name)]) ?>
                                       <?php endif; ?>
                                       <?= $this->Html->link(__('<i class="fas fa-edit"></i>'), ['action' => 'edit', $challenge->id], ['escape'=>false, 'class' =>'btn btn-xs btn-info']) ?>
+                                      <?= $this->Html->link(__('<i class="fas fa-history"></i>'), ['controller' => 'Records', 'action' => 'historyChallenge', $challenge->id], ['escape'=>false, 'class' =>'btn btn-xs btn-info']) ?>
                                       <?= $this->Form->postLink(__('<i class="fas fa-trash"></i>'), ['action' => 'delete', $challenge->id], ['escape'=>false, 'class' =>'btn btn-xs btn-warning', 'confirm' => __('Esta seguro de eliminar el desafío: {0}?', $challenge->name)]) ?>
                                     </td>
                                 </tr>

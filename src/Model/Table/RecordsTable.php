@@ -54,6 +54,10 @@ class RecordsTable extends Table
             'foreignKey' => 'result_id',
             'joinType' => 'INNER',
         ]);
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+            'joinType' => 'INNER',
+        ]);
     }
 
     /**

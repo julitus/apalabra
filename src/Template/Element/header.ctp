@@ -10,7 +10,7 @@
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
-      <span class="nav-link"><?= $this->request->session()->read('Auth.User.name') ?></span>
+      <span class="nav-link"><?= $this->request->session()->read('Auth.User.name').' ('.$this->request->session()->read('Auth.User.username').')' ?></span>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-widget="control-sidebar" data-slide="true" data-toggle="modal" data-target="#modal-edit-profile" href="#">

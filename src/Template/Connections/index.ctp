@@ -1,14 +1,14 @@
 <!-- Content Header (Page header) -->
-<section class="content-header apal-page" data-sidebar="players">
+<section class="content-header apal-page" data-sidebar="connections">
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Jugadores</h1>
+        <h1>Jugadores Registrados</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Jugadores</li>
+          <li class="breadcrumb-item active">Jugadores Registrados</li>
         </ol>
       </div>
     </div>
@@ -27,11 +27,11 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        Lista de Jugadores
+                        Lista de Jugadores Registrados
                     </h3>
 
                     <div class="card-tools">
-                      <?= $this->Form->create(null, ['type' => 'get', 'url' => ['controller' => 'Players', 'action' => 'index'], 'role' => 'form']) ?>
+                      <?= $this->Form->create(null, ['type' => 'get', 'url' => ['controller' => 'Connections', 'action' => 'index'], 'role' => 'form']) ?>
                         <div class="input-group input-group-sm search-tool">
                           <input type="text" name="search" value="<?= $search ?>" class="form-control float-right" placeholder="Buscar... nombre, apellido o email">
 
@@ -47,9 +47,10 @@
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>
-                                <th scope="col"><?= $this->Paginator->sort('firstname', 'Nombres') ?></th>
-                                <th scope="col"><?= $this->Paginator->sort('lastname', 'Apellidos') ?></th>
-                                <th scope="col"><?= $this->Paginator->sort('email', 'Email') ?></th>
+                                <th scope="col"><?= $this->Paginator->sort('Players.firstname', 'Nombres') ?></th>
+                                <th scope="col"><?= $this->Paginator->sort('Players.lastname', 'Apellidos') ?></th>
+                                <th scope="col"><?= $this->Paginator->sort('Players.email', 'Email') ?></th>
+                                <th scope="col"><?= $this->Paginator->sort('attemps', 'N° Intentos') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('active', 'Estado') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('created', 'Creado') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('modified', 'Actualizado') ?></th>
@@ -57,23 +58,22 @@
                             </tr>
                         </thead>
                         <tbody class="tbody-xs">
-                            <?php foreach ($players as $player): ?>
+                            <?php foreach ($connections as $connection): ?>
                                 <tr>
-                                    <td><?= h($player->firstname) ?></td>
-                                    <td><?= h($player->lastname) ?></td>
-                                    <td><?= h($player->email) ?></td>
-                                    <td><?= $status[$player->active] ?></td>
-                                    <td><?= h($player->created->i18nFormat('dd-MM-yyyy HH:mm')) ?></td>
-                                    <td><?= h($player->modified->i18nFormat('dd-MM-yyyy HH:mm')) ?></td>
+                                    <td><?= h($connection->player->firstname) ?></td>
+                                    <td><?= h($connection->player->lastname) ?></td>
+                                    <td><?= h($connection->player->email) ?></td>
+                                    <td><?= $this->Number->format($connection->attemps) ?></td>
+                                    <td><?= $status[$connection->active] ?></td>
+                                    <td><?= h($connection->created->i18nFormat('dd-MM-yyyy HH:mm')) ?></td>
+                                    <td><?= h($connection->modified->i18nFormat('dd-MM-yyyy HH:mm')) ?></td>
                                     <td class="actions">
-                                      <?php if ($player->active): ?>
-                                        <?= $this->Form->postLink(__('<i class="fas fa-ban"></i>'), ['action' => 'active', $player->id], ['escape'=>false, 'class' =>'btn btn-xs btn-info', 'confirm' => __('Esta seguro de desactivar al jugador: {0}?', $player->email)]) ?>
+                                      <?php if ($connection->active): ?>
+                                        <?= $this->Form->postLink(__('<i class="fas fa-ban"></i>'), ['action' => 'active', $connection->id], ['escape'=>false, 'class' =>'btn btn-xs btn-info', 'confirm' => __('Esta seguro de desactivar al jugador: {0}?', $connection->player->firstname . ' ' . $connection->player->lastname)]) ?>
                                       <?php else: ?>
-                                        <?= $this->Form->postLink(__('<i class="fas fa-check"></i>'), ['action' => 'active', $player->id], ['escape'=>false, 'class' =>'btn btn-xs btn-info', 'confirm' => __('Esta seguro de activar al jugador: {0}?', $player->email)]) ?>
+                                        <?= $this->Form->postLink(__('<i class="fas fa-check"></i>'), ['action' => 'active', $connection->id], ['escape'=>false, 'class' =>'btn btn-xs btn-info', 'confirm' => __('Esta seguro de activar al jugador: {0}?', $connection->player->firstname . ' ' . $connection->player->lastname)]) ?>
                                       <?php endif; ?>
-                                      <?= $this->Html->link(__('<i class="fas fa-key"></i>'), ['action' => 'updatePassword', $player->id], ['escape'=>false, 'class' =>'btn btn-xs btn-info']) ?>
-                                      <?= $this->Html->link(__('<i class="fas fa-edit"></i>'), ['action' => 'edit', $player->id], ['escape'=>false, 'class' =>'btn btn-xs btn-info']) ?>
-                                      <?= $this->Form->postLink(__('<i class="fas fa-trash"></i>'), ['action' => 'delete', $player->id], ['escape'=>false, 'class' =>'btn btn-xs btn-warning', 'confirm' => __('Esta seguro de eliminar al jugador: {0}?', $player->email)]) ?>
+                                      <?= $this->Html->link(__('<i class="fas fa-history"></i>'), ['controller' => 'Records', 'action' => 'historyPlayer', $connection->player_id], ['escape'=>false, 'class' =>'btn btn-xs btn-info']) ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
