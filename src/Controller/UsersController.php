@@ -193,6 +193,7 @@ class UsersController extends AppController
             $data['name'] = $data['new_name'];
             $data['email'] = $data['new_email'];
             $data['phone'] = $data['new_phone'];
+            $data['description'] = $data['new_description'];
 
             $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {

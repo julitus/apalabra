@@ -146,6 +146,9 @@
                     <div class="form-group">
                         <?= $this->Form->control('new_phone', ['class' => 'form-control', 'label' => 'Telefóno / Celular', 'maxlength' => 64, 'type' => 'phone', 'value' => $this->request->session()->read('Auth.User.phone')]) ?>
                     </div>
+                    <div class="form-group">
+                        <?= $this->Form->control('new_description', ['class' => 'form-control', 'label' => 'Descripción', 'type' => 'textarea', 'value' => $this->request->session()->read('Auth.User.description')]) ?>
+                    </div>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <?= $this->Form->button(__('Cerrar'), ['type' => 'button', 'class' => 'btn btn-secondary', 'data-dismiss' => 'modal']) ?>

@@ -37,6 +37,7 @@ class User extends Entity
         'name' => true,
         'email' => true,
         'phone' => true,
+        'description' => true,
         'code' => true,
         'created' => true,
         'modified' => true,

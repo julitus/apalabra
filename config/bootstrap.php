@@ -202,12 +202,3 @@ Type::build('timestamp')
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
 //Inflector::rules('transliteration', ['/å/' => 'aa']);
-
-
-/*header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Credentials: true');
-header('Access-Control-Allow-Methods: PUT, GET, HEAD, POST, DELETE, OPTIONS, TRACE, PATH, CONNECT');
-header('Access-Control-Allow-Headers: Origin, X-Auth-Token, X-Requested-With, Content-Type, Accept, Authorization, x-xsrf-token, Access-Control-Request-Method, Access-Control-Request-Headers');
-header('Accept: application/json, text/plain');
-header('Content-Type: application/json; charset=utf-8');
-header('Content-Type: application/x-www-form-urlencoded; charset=utf-8');*/

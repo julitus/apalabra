@@ -138,7 +138,7 @@ Router::scope('/api/', function (RouteBuilder $routes) {
     $routes->connect('challenge/list', ['controller' => 'RestChallenges', 'action' => 'getChallenges', 'isRest' => true, 'requireAuthorization' => true]);
     $routes->connect('challenge/get', ['controller' => 'RestChallenges', 'action' => 'getChallenge', 'isRest' => true, 'requireAuthorization' => true]);
 
-    $routes->connect('result/save', ['controller' => 'RestChallenges', 'action' => 'saveResult', 'isRest' => true, 'requireAuthorization' => true]);
+    $routes->connect('challenge/result', ['controller' => 'RestChallenges', 'action' => 'saveResult', 'isRest' => true, 'requireAuthorization' => true]);
 
     
     $routes->fallbacks(DashedRoute::class);

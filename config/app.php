@@ -18,6 +18,15 @@ return [
      * true: Errors and warnings shown.
      */
     'debug' => filter_var(env('DEBUG', false), FILTER_VALIDATE_BOOLEAN),
+    'Cors' => [
+      'AllowOrigin' => true, // accept all origin
+          'AllowCredentials' => true,
+          'AllowMethods' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], // accept all HTTP methods
+          'AllowHeaders' => true, // accept all headers
+          'ExposeHeaders' => false, // don't accept personal headers
+          'MaxAge' => 86400, // cache for 1 day
+          'exceptionRenderer' => 'Cors\Error\AppExceptionRenderer', // Use ExeptionRenderer class of plugin
+    ],
 
     /*
      * Configure basic information about the application.

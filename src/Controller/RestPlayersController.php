@@ -115,7 +115,7 @@ class RestPlayersController extends RestController
     	if ($this->request->is('post')) {
 
             $data = $this->request->getData();
-            $data['password'] = $data['newpass'];
+            $data['password'] = $data['new_password'];
 
             $player = $this->Players->get($this->payload->id);
             $player = $this->Players->patchEntity($player, $data);
@@ -184,8 +184,9 @@ class RestPlayersController extends RestController
         if ($this->request->is('post')) {
 
             $connections = $this->Players->Connections->find()
-                                ->select(['Connections.id', 'Connections.user_id', 'Connections.attemps', 'Users.id', 'Users.name', 'Users.email'])
-                                ->where(['Connections.player_id' => $this->payload->id, 'Connections.active' => true])
+                                ->select(['Connections.id', 'Connections.user_id', 'Connections.attemps', 'Connections.active', 'Users.id', 'Users.name', 'Users.email', 'Users.description', 'Users.code'])
+                                //->where(['Connections.player_id' => $this->payload->id, 'Connections.active' => true])
+                                ->where(['Connections.player_id' => $this->payload->id])
                                 ->contain(['Users']);
 
             $this->set(compact('connections'));

@@ -35,6 +35,7 @@ class Record extends Entity
         'player_id' => true,
         'challenge_id' => true,
         'result_id' => true,
+        'user_id' => true,
         'score' => true,
         'time' => true,
         'successful' => true,

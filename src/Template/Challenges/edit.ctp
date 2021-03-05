@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <?= $this->Form->control('time', ['class' => 'form-control', 'label' => 'Tiempo', 'step' => 1, 'placeholder' => 'en segundos.']) ?>
+                                <?= $this->Form->control('time', ['class' => 'form-control', 'label' => 'Tiempo', 'step' => 1, 'min' => 1, 'placeholder' => 'en segundos.']) ?>
                             </div>
                         </div>
                         <div class="col-md-2">
