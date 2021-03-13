@@ -5,16 +5,7 @@
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-1 pb-1 mb-1 d-flex">
-      <!--div class="image">
-        <?= $this->Html->image('user.png', ['class' => 'img-circle elevation-2']); ?>
-      </div>
-      <div class="info">
-        <a href="#" class="d-block"><?= $this->request->session()->read('Auth.User.username') ?></a>
-      </div-->
-    </div>
-
+    
     <!-- Sidebar Menu -->
     <nav class="mt-3">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent nav-legacy nav-compact" data-widget="treeview" role="menu" data-accordion="false">
