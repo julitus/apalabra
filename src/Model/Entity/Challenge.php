@@ -12,7 +12,7 @@ use Cake\ORM\Entity;
  * @property int $time
  * @property string|null $code
  * @property float $points
- * @property int $rows
+ * @property int $nrows
  * @property int $attemps
  * @property bool $active
  * @property \Cake\I18n\FrozenTime $created
@@ -38,7 +38,7 @@ class Challenge extends Entity
         'time' => true,
         'code' => true,
         'points' => true,
-        'rows' => true,
+        'nrows' => true,
         'attemps' => true,
         'active' => true,
         'created' => true,

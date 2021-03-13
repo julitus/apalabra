@@ -91,9 +91,9 @@ class ChallengesTable extends Table
             ->notEmptyString('points');
 
         $validator
-            ->integer('rows')
-            ->requirePresence('rows', 'create')
-            ->notEmptyString('rows');
+            ->integer('nrows')
+            ->requirePresence('nrows', 'create')
+            ->notEmptyString('nrows');
 
         $validator
             ->integer('attemps')

@@ -53,7 +53,7 @@
                                 <th scope="col"><?= $this->Paginator->sort('code', 'Clave') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('time', 'Tiempo') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('points', 'Puntos') ?></th>
-                                <th scope="col"><?= $this->Paginator->sort('rows', 'N° Preguntas') ?></th>
+                                <th scope="col"><?= $this->Paginator->sort('nrows', 'N° Preguntas') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('attemps', 'N° Intentos') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('active', 'Estado') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('modified', 'Actualizado') ?></th>
@@ -67,7 +67,7 @@
                                     <td><?= h($challenge->code) ?></td>
                                     <td><?= $this->Number->format($challenge->time) ?></td>
                                     <td><?= $this->Number->format($challenge->points) ?></td>
-                                    <td><?= $this->Number->format($challenge->rows) ?></td>
+                                    <td><?= $this->Number->format($challenge->nrows) ?></td>
                                     <td><?= $this->Number->format($challenge->attemps) ?></td>
                                     <td><?= $status[$challenge->active] ?></td>
                                     <td><?= h($challenge->modified->i18nFormat('dd-MM-yyyy HH:mm')) ?></td>

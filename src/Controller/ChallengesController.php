@@ -75,7 +75,7 @@ class ChallengesController extends AppController
 
             $data = $this->request->getData();
             $data['user_id'] = $this->Auth->user('id');
-            $data['rows'] = count($data['questions']);
+            $data['nrows'] = count($data['questions']);
 
             $challenge = $this->Challenges->patchEntity($challenge, $data, ['associated' => [ 'Questions']]);
             if ($this->Challenges->save($challenge)) {
@@ -102,7 +102,7 @@ class ChallengesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
 
             $data = $this->request->getData();
-            $data['rows'] = count($data['questions']);
+            $data['nrows'] = count($data['questions']);
 
             $challenge = $this->Challenges->patchEntity($challenge, $data, ['associated' => [ 'Questions']]);
             if ($this->Challenges->save($challenge)) {
