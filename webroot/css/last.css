@@ -109,6 +109,17 @@ div.success {
 .question-remove:hover {
 	opacity: .9;	
 }
+.user-panel .info {
+	width: 100%;
+	text-align: center;
+	padding: 5px;
+}
+.user-panel .info span {
+	font-size: 10px;
+}
+.user-panel .info b {
+	font-size: 24px;
+}
 /*.question-remove:hover ~ .row {
 	background-color: #bbb;
 }*/
