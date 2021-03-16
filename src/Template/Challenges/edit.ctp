@@ -27,7 +27,7 @@
                 <h3 class="card-title">Editar Desafío</h3>
               </div>
 
-              <?= $this->Form->create($challenge) ?>
+              <?= $this->Form->create($challenge, ['type' => 'post']) ?>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
